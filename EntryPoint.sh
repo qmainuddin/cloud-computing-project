@@ -5,12 +5,11 @@ exec 1>log.out 2>&1
 
 #installing dependencies..
 sudo su
-yum install docker
-yum install java-17-openjdk
+yum install -y docker
+yum install -y java-17-openjdk
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 . ~/.nvm/nvm.sh
-nvm install 16
-npm install
+nvm install -y 16
 yum install -y nginx
 
 #running backend server
@@ -20,6 +19,7 @@ java -jar larget/auction-app-0.0.1-SNAPSHOT.jar
 
 #running fronend server
 cd ../frontend
+npm install
 npm run build
 sudo cp -f ../nginx.conf /etc/nginx/
 service nginx start
