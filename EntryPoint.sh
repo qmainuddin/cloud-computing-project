@@ -12,6 +12,9 @@ chmod +x /usr/bin/docker-compose
 service docker start
 yum install -y java
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 . ~/.nvm/nvm.sh
 nvm install 16
 yum install -y nginx
@@ -19,6 +22,7 @@ yum install -y nginx
 #running backend server
 cd backend
 sudo docker-compose up -d
+./mvnw clean install
 nohup java -jar target/auction-app-0.0.1-SNAPSHOT.jar > java-spring.log 2>&1 &
 
 #running fronend server
