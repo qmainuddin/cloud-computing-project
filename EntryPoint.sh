@@ -5,30 +5,33 @@ exec 1>log.out 2>&1
 
 #installing dependencies..
 sudo su
-yum install -y docker
-curl -SL https://github.com/docker/compose/releases/download/v2.23.3/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
-ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-chmod +x /usr/bin/docker-compose 
-service docker start
 yum install -y java
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. ~/.nvm/nvm.sh
-nvm install 16
-yum install -y nginx
 
 #running backend server
 cd backend
-sudo docker-compose up -d
+# nano /etc/profile
+#Add two following line in /etc/profile
+#export JAVA_HOME=/usr/lib/jvm/jre-21
+#export PATH=$JAVA_HOME/bin:$PATH
+sudo cp -f ../profile /etc/
 ./mvnw clean install
 nohup java -jar target/auction-app-0.0.1-SNAPSHOT.jar > java-spring.log 2>&1 &
 
+
+
+
 #running fronend server
-cd ../frontend
-npm install
-npm run build
-sudo cp -f ../nginx.conf /etc/nginx/
-service nginx start
-chkconfig nginx on
+# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# . ~/.nvm/nvm.sh
+# nvm install 16
+# yum install -y nginx
+
+# cd ../frontend
+# npm install
+# npm run build
+# sudo cp -f ../nginx.conf /etc/nginx/
+# service nginx start
+# chkconfig nginx on
