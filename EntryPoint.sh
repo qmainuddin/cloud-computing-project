@@ -15,7 +15,7 @@ cd backend
 #export PATH=$JAVA_HOME/bin:$PATH
 sudo cp -f ../profile /etc/
 ./mvnw clean install
-nohup java -jar target/auction-app-0.0.1-SNAPSHOT.jar > java-spring.log 2>&1 &
+java -jar target/auction-app-0.0.1-SNAPSHOT.jar > java-spring.log 2>&1 &
 
 
 
