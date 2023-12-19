@@ -15,7 +15,7 @@
       <jdbc-url>jdbc:mysql://action.c1k0i06smw5q.us-east-1.rds.amazonaws.com:3306</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="aws2" uuid="376c4bff-c8ae-4645-9f56-e8291274fe4f">
+    <data-source source="LOCAL" name="cloud-computing-project-db" uuid="376c4bff-c8ae-4645-9f56-e8291274fe4f">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>

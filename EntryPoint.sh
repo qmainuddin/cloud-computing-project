@@ -11,9 +11,12 @@ yum install -y java
 cd backend
 # nano /etc/profile
 #Add two following line in /etc/profile
+echo -e 'export JAVA_HOME=/usr/lib/jvm/jre-21\nexport PATH=$JAVA_HOME/bin:$PATH' | sudo tee -a /etc/profile
+source /etc/profile
 #export JAVA_HOME=/usr/lib/jvm/jre-21
 #export PATH=$JAVA_HOME/bin:$PATH
-sudo cp -f ../profile /etc/
+# sudo cp -f ../profile /etc/
+
 ./mvnw clean install
 java -jar target/auction-app-0.0.1-SNAPSHOT.jar > java-spring.log 2>&1 &
 
