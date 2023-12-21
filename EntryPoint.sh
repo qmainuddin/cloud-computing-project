@@ -17,7 +17,17 @@ source /etc/profile
 ./mvnw clean install
 java -jar target/auction-app-0.0.1-SNAPSHOT.jar > java-spring.log 2>&1 &
 
+cd ..
+sudo cp -f auction.service /etc/systemd/system/
+sudo cd /etc/systemd/system/
+sudo systemctl enable auction.service 
+sudo systemctl start auction.service 
 
+
+yum install -y httpd
+systemctl start httpd.service
+systemctl enable httpd.service
+echo "<h1>Mainuddin’s hello from Server IP Address: $(hostname -f) </h1>" > /var/www/html/index.html
 
 
 #running fronend server

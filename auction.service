@@ -1,0 +1,12 @@
+[Unit]
+Description=Our auction program
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/cloud-computing-project/backend
+ExecStart=/usr/bin/java -jar target/auction-app-0.0.1-SNAPSHOT.jar
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
