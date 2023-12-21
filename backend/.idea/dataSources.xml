@@ -19,7 +19,7 @@
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://cloud-project-auction-db.cli50tucijhw.us-east-2.rds.amazonaws.com:3306</jdbc-url>
+      <jdbc-url>jdbc:mysql://auctiondb.c1k0i06smw5q.us-east-1.rds.amazonaws.com:3306</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
